@@ -1,17 +1,17 @@
 import React from "react";
 import type { AppProps } from "next/app";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
+import { Ethereum, Polygon, Base, Mumbai, Binance } from "@thirdweb-dev/chains";
 import { Navbar } from "../components/Navbar";
 import Head from "next/head";
 import "../styles/globals.css";
 
-// This is the chainId your dApp will work on.
-const activeChain = "mumbai";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider 
-      activeChain={activeChain} 
+      activeChain={Mumbai} 
+      supportedChains={[Ethereum, Polygon, Base, Mumbai, Binance]}
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENTID}>
       <Head>
         <title>thirdweb Custom Dashboard Example</title>

@@ -58,12 +58,18 @@ export default function ERC721() {
             if (deployedAddress) {
                 setContractAddress(deployedAddress);
                 const link = `https://thirdweb.com/${chainName}/${deployedAddress}`;
-                const newTab = window.open(link, "_blank");
-                if (newTab) {
-                    newTab.focus();
-                } else {
-                    console.warn("Popup was blocked. You can manually click the link to view the contract.");
+        
+                const shouldVisitLink = window.confirm("Contract deployed successfully. Do you want to visit the contract's dashboard?");
+        
+                if (shouldVisitLink) {
+                    const newTab = window.open(link, "_blank");
+                    if (newTab) {
+                        newTab.focus();
+                    } else {
+                        console.warn("Popup was blocked. You can manually click the link to view the contract.");
+                    }
                 }
+        
                 router.push(`/`);
             } else {
                 console.error("Deployed address is undefined.");
