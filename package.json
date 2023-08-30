@@ -1,0 +1,28 @@
+{
+  "name": "custom-thirdweb-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@thirdweb-dev/react": "^3.14.39",
+    "@thirdweb-dev/sdk": "^3.10.58",
+    "ethers": "^5.7.2",
+    "next": "^13",
+    "react": "^18.2",
+    "react-dom": "^18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.11",
+    "@types/react": "^18.0.26",
+    "eslint": "^8.29.0",
+    "eslint-config-next": "^13",
+    "typescript": "4.9.4"
+  }
+}
