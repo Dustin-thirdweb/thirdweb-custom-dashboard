@@ -29,8 +29,8 @@ const contractTypeToImageMapping = {
   "marketplace-v3": `icons/marketplace.webp`,
   "marketplace": `icons/marketplace.webp`,
   pack: `icons/pack.webp`,
-  multiwrap: `icons/general.webp`,
-  "multi-wrap": `icons/general.webp`,
+  multiwrap: `icons/custom.svg`,
+  "multi-wrap": `icons/custom.svg`,
   custom: `icons/custom.svg`,
 };
 
