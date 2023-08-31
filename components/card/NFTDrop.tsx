@@ -7,6 +7,9 @@ export default function NFTDrop () {
     return (
         <div className={styles.card}>
             <div className={styles.cardContent}>
+                <div className={styles.gradientText}>
+                    thirdweb
+                </div>
                 <div className={styles.label}>
                     <h1>NFT Drop</h1>
                 </div>

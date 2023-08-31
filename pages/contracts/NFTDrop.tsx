@@ -48,7 +48,7 @@ export default function NFTDrop() {
                 {
                     name: contractName,
                     description: contractDescription,
-                    primary_sale_recipient: primarySaleRecipient,
+                    primary_sale_recipient: address,
                     symbol: contractSymbol,
                     platform_fee_basis_points: 500,
                     platform_fee_recipient: address,
@@ -81,8 +81,11 @@ export default function NFTDrop() {
                     {isDeploying && <div className={styles.blurOverlay}>
                         <div className={styles.loadingSpinner}></div></div>}
                     <div className={styles.deployCard}>
+                        <div className={styles.gradientText}>
+                            thirdweb
+                        </div>
                         <div className={styles.header}>
-                            <h1>Step 1: Set up the project details</h1>
+                            <h1>NFT Drop</h1>
                         </div>
                         <div className={styles.divider}></div>
                         <br />
@@ -106,7 +109,7 @@ export default function NFTDrop() {
                                 onChange={(e) => setContractSymbol(e.target.value)}
                             />
                         </div>
-                        <h1 className={styles.label}>Primary Sale Recipient</h1>
+                        {/* <h1 className={styles.label}>Primary Sale Recipient</h1>
                         <div className={styles.inputRow}>
                             <input
                                 className={styles.input}
@@ -115,7 +118,7 @@ export default function NFTDrop() {
                                 defaultValue={address}
                                 onChange={(e) => setPrimarySaleRecipient(e.target.value)}
                             />
-                        </div>
+                        </div> */}
                         <h1 className={styles.label}>Royalty Fee</h1>
                         <div className={styles.inputRow}>
                             <input
@@ -145,20 +148,6 @@ export default function NFTDrop() {
                                 onChange={(e) => setContractDescription(e.target.value)}
                             />
                         </div>
-                        <div className={styles.header}>
-                            <h1>Step 2: Deploy</h1>
-                        </div>
-                        <div className={styles.divider}></div>
-                        <div className={styles.description}>
-                            <p>Once you have decided on all the information above, click deploy and you will be prompted to pay the gas fee for the contract deployment.</p>
-                            <p>Once deployed, you will be redirected to your contract dashboard via thirdweb! There you will be able to do things such as:</p>
-                            <br />
-                            <p>- Add project image</p>
-                            <p>- Upload your artwork</p>
-                            <p>- Set claim phases and allowlists</p>
-                            <p>- Control all aspects of the contract for a successful mint!</p>
-                        </div>
-                        <div className={styles.divider}></div>
                         <button className={styles.customButton}
                             onClick={async () => {
                                 setIsDeploying(true);
@@ -166,7 +155,7 @@ export default function NFTDrop() {
                                     await deployContract("nft-drop", {
                                         name: contractName,
                                         description: contractDescription,
-                                        primary_sale_recipient: primarySaleRecipient,
+                                        primary_sale_recipient: address,
                                         symbol: contractSymbol,
                                         platform_fee_basis_points: 500,
                                         platform_fee_recipient: address,
@@ -184,7 +173,6 @@ export default function NFTDrop() {
                             {isDeploying ? "Deploying..." : "Deploy NFT Drop"}
                         </button>
                         <br />
-                        <div className={styles.divider}></div>
                         {/* Show the link once the contract is deployed */}
                         {contractAddress && (
                             <div className={styles.centeredContainer}>

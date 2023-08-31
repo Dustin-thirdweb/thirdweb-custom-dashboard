@@ -90,9 +90,6 @@ const Home: NextPage = () => {
           </>
         ) : (
           <>
-            <Link href="/deploy" className={styles.customButton}>
-              Deploy a Contract
-            </Link>
             <div className={styles.contractBoxGrid}>
               {loading && <p>Loading...</p>}
               {existingContracts.map((c) => (

@@ -25,7 +25,9 @@ export function Navbar() {
                     </Link>
 
                     <div className={styles.navMiddle}>
-                        
+                        <Link href="/deploy" className={`${styles.link} ${styles.navMiddle}`}>
+                            Deploy
+                        </Link>
                     </div>
                 </div>
 

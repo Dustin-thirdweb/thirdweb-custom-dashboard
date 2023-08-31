@@ -504,3 +504,23 @@
     transform: rotate(360deg);
   }
 }
+
+.cardGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap between cards */
+}
+
+.card {
+  width: 500px;
+  background-color: #000000;
+  border: 1px solid #202425;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.buttonLink{
+  color: #ffffff;
+}
