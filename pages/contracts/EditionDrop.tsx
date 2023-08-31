@@ -30,6 +30,7 @@ export default function EditionDrop() {
     const [contractName, setContractName] = useState("");
     const [contractDescription, setContractDescription] = useState("");
     const [contractSymbol, setContractSymbol] = useState("");
+    const [primarySaleRecipient, setPrimarySaleRecipient] = useState("")
     const [royaltyFee, setRoyaltyFee] = useState("");
     const [feeRecipient, setFeeRecipient] = useState("");
     const [platformFeeRecipient, setPlatformFeeRecipient] = useState("");
@@ -47,7 +48,7 @@ export default function EditionDrop() {
                 {
                     name: contractName,
                     description: contractDescription,
-                    primary_sale_recipient: address,
+                    primary_sale_recipient: primarySaleRecipient,
                     symbol: contractSymbol,
                     platform_fee_basis_points: 500,
                     platform_fee_recipient: address,
@@ -105,6 +106,16 @@ export default function EditionDrop() {
                                 onChange={(e) => setContractSymbol(e.target.value)}
                             />
                         </div>
+                        <h1 className={styles.label}>Primary Sale Recipient</h1>
+                        <div className={styles.inputRow}>
+                            <input
+                                className={styles.input}
+                                type="text"
+                                placeholder="0x address where you want royalties to be sent"
+                                defaultValue={address}
+                                onChange={(e) => setPrimarySaleRecipient(e.target.value)}
+                            />
+                        </div>
                         <h1 className={styles.label}>Royalty Fee</h1>
                         <div className={styles.inputRow}>
                             <input
@@ -123,16 +134,6 @@ export default function EditionDrop() {
                                 placeholder="0x address where you want royalties to be sent"
                                 defaultValue={address}
                                 onChange={(e) => setFeeRecipient(e.target.value)}
-                            />
-                        </div>
-                        <h1 className={styles.label}>Platform Fee Recipient</h1>
-                        <div className={styles.inputRow}>
-                            <input
-                                className={styles.input}
-                                type="text"
-                                placeholder="0x address where you want royalties to be sent"
-                                defaultValue={address}
-                                onChange={(e) => setPlatformFeeRecipient(e.target.value)}
                             />
                         </div>
                         <h1 className={styles.label}>Project description</h1>
