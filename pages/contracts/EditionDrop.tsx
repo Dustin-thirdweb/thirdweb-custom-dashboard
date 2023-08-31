@@ -166,7 +166,7 @@ export default function EditionDrop() {
                                     await deployContract("edition-drop", {
                                         name: contractName,
                                         description: contractDescription,
-                                        primary_sale_recipient: address,
+                                        primary_sale_recipient: primarySaleRecipient,
                                         symbol: contractSymbol,
                                         platform_fee_basis_points: 500,
                                         platform_fee_recipient: address,
