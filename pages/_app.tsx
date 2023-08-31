@@ -10,7 +10,6 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider 
-      activeChain={Mumbai} 
       supportedChains={[Ethereum, Polygon, Base, Mumbai, Binance]}
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENTID}>
       <Head>

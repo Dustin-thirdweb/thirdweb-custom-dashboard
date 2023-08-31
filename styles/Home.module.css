@@ -524,3 +524,51 @@
 .buttonLink{
   color: #ffffff;
 }
+
+/* styles.module.css */
+
+.metadataBox {
+  display: flex;
+  align-items: center;
+}
+
+.metadataRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.metadataImage {
+  margin-right: 20px;
+}
+
+.collectionImage {
+  max-width: 200px;
+}
+
+.metadataText {
+  flex: 1;
+  width: 65%;
+}
+
+.contractAddress{
+  color: #ffffff;
+  font-size: .75rem;
+  font-weight: 400;
+}
+
+.descriptionBox{
+  width: 65%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 16px;
+  border-radius: 20px;
+  flex-direction: row;
+  align-items: right;
+}
+
+.descriptionWrapper {
+  width: 160px;
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center text content */
+}
