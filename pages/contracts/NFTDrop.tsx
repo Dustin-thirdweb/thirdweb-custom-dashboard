@@ -31,6 +31,8 @@ export default function NFTDrop() {
     const [contractDescription, setContractDescription] = useState("");
     const [contractSymbol, setContractSymbol] = useState("");
     const [royaltyFee, setRoyaltyFee] = useState("");
+    const [feeRecipient, setFeeRecipient] = useState("");
+    const [platformFeeRecipient, setPlatformFeeRecipient] = useState("");
     const link = useMemo(() => `https://thirdweb.com/${chainName}/${contractAddress}`, [chainName, contractAddress]);
 
     async function deployContract(contractSelected: ContractType, contractProperties: any) {
@@ -113,13 +115,13 @@ export default function NFTDrop() {
                                 onChange={(e) => setRoyaltyFee(e.target.value)}
                             />
                         </div>
-                        {/* <h1 className={styles.label}>Royalty Recipient</h1>
+                        <h1 className={styles.label}>Royalty Recipient</h1>
                         <div className={styles.inputRow}>
                             <input
                                 className={styles.input}
                                 type="text"
                                 placeholder="0x address where you want royalties to be sent"
-                                value={feeRecipient}
+                                defaultValue={address}
                                 onChange={(e) => setFeeRecipient(e.target.value)}
                             />
                         </div>
@@ -129,10 +131,10 @@ export default function NFTDrop() {
                                 className={styles.input}
                                 type="text"
                                 placeholder="0x address where you want royalties to be sent"
-                                value={plaformFeeRecipient}
+                                defaultValue={address}
                                 onChange={(e) => setPlatformFeeRecipient(e.target.value)}
                             />
-                        </div> */}
+                        </div>
                         <h1 className={styles.label}>Project description</h1>
                         <div className={styles.inputContainer}>
                             <textarea
