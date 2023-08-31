@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { ChainId, ConnectWallet, useAddress, useChainId, useSDK } from "@thirdweb-dev/react";
 import { ContractType } from "@thirdweb-dev/sdk";
 import { useRouter } from "next/router";
 import styles from '../../styles/Card.module.css';
 
-export default function ERC721() {
+export default function EditionDrop() {
     const sdk = useSDK();
     const [isDeploying, setIsDeploying] = useState(false);
     const [contractAddress, setContractAddress] = useState<string>(""); // Provide a default empty string
@@ -31,8 +31,7 @@ export default function ERC721() {
     const [contractDescription, setContractDescription] = useState("");
     const [contractSymbol, setContractSymbol] = useState("");
     const [royaltyFee, setRoyaltyFee] = useState("");
-    const [feeRecipient, setFeeRecipient] = useState("");
-    const [plaformFeeRecipient, setPlatformFeeRecipient] = useState("");
+    const link = useMemo(() => `https://thirdweb.com/${chainName}/${contractAddress}`, [chainName, contractAddress]);
 
     async function deployContract(contractSelected: ContractType, contractProperties: any) {
         if (!address) {
@@ -49,30 +48,15 @@ export default function ERC721() {
                     primary_sale_recipient: address,
                     symbol: contractSymbol,
                     platform_fee_basis_points: 500,
-                    platform_fee_recipient: plaformFeeRecipient,
-                    fee_recipient: feeRecipient,
+                    platform_fee_recipient: address,
+                    fee_recipient: address,
                     seller_fee_basis_points: parseInt(royaltyFee),
                 }
             );
 
             if (deployedAddress) {
                 setContractAddress(deployedAddress);
-                const link = `https://thirdweb.com/${chainName}/${deployedAddress}`;
-        
-                const shouldVisitLink = window.confirm("Contract deployed successfully. Do you want to visit the contract's dashboard?");
-        
-                if (shouldVisitLink) {
-                    const newTab = window.open(link, "_blank");
-                    if (newTab) {
-                        newTab.focus();
-                    } else {
-                        console.warn("Popup was blocked. You can manually click the link to view the contract.");
-                    }
-                }
-        
-                router.push(`/`);
-            }
-         else {
+            } else {
                 console.error("Deployed address is undefined.");
             }
         } catch (error) {
@@ -129,7 +113,7 @@ export default function ERC721() {
                                 onChange={(e) => setRoyaltyFee(e.target.value)}
                             />
                         </div>
-                        <h1 className={styles.label}>Royalty Recipient</h1>
+                        {/* <h1 className={styles.label}>Royalty Recipient</h1>
                         <div className={styles.inputRow}>
                             <input
                                 className={styles.input}
@@ -148,7 +132,7 @@ export default function ERC721() {
                                 value={plaformFeeRecipient}
                                 onChange={(e) => setPlatformFeeRecipient(e.target.value)}
                             />
-                        </div>
+                        </div> */}
                         <h1 className={styles.label}>Project description</h1>
                         <div className={styles.inputContainer}>
                             <textarea
@@ -176,13 +160,13 @@ export default function ERC721() {
                             onClick={async () => {
                                 setIsDeploying(true);
                                 try {
-                                    await deployContract("nft-drop", {
+                                    await deployContract("edition-drop", {
                                         name: contractName,
                                         description: contractDescription,
                                         primary_sale_recipient: address,
                                         symbol: contractSymbol,
                                         platform_fee_basis_points: 500,
-                                        platform_fee_recipient: "0x7f0EF299BDbCF7418fc03450428F2310Fef101FF",
+                                        platform_fee_recipient: address,
                                         fee_recipient: address,
                                         seller_fee_basis_points: 100,
                                     });
@@ -196,6 +180,31 @@ export default function ERC721() {
                         >
                             {isDeploying ? "Deploying..." : "Deploy NFT Drop"}
                         </button>
+                        <br />
+                        <div className={styles.divider}></div>
+                        {/* Show the link once the contract is deployed */}
+                        {contractAddress && (
+                            <div className={styles.centeredContainer}>
+                                <div className={styles.cardOverlay}>
+                                    <p>Contract deployed successfully. You can view the contract's dashboard:</p>
+                                    <button
+                                        onClick={() => {
+                                            setContractAddress(""); // Hide the card
+                                            const newTab = window.open(link, "_blank"); // Open link in new tab
+                                            if (newTab) {
+                                                newTab.focus();
+                                                router.push('/'); // Redirect to ./
+                                            } else {
+                                                console.warn("Popup was blocked. You can manually click the link to view the contract.");
+                                            }
+                                        }}
+                                        className={styles.customButton} // Add your button styles
+                                    >
+                                        View Dashboard
+                                    </button>
+                                </div>
+                            </div>
+                        )}
                         <br />
                     </div>
                 </>
