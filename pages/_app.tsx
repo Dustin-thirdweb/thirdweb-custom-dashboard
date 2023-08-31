@@ -9,7 +9,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider 
+    <ThirdwebProvider
       supportedChains={[Ethereum, Polygon, Base, Mumbai, Binance]}
       clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENTID}>
       <Head>
@@ -23,6 +23,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="keywords"
           content="thirdweb, thirdweb deployer, thirdweb sdk deploy contract, thirdweb sdk, thirdweb react, thirdweb typescript"
         />
+        <script id="__CONTEXT_BUBBLE__" src="https://portal.usecontext.io/portal/portal.js" data-bot-id="dUr31k8Qt"
+          data-theme="light" data-type="launcher" data-position="bottom-right" data-background="#000000"
+          data-color="#FFFFFF"></script>
       </Head>
       <Navbar />
       <Component {...pageProps} />
