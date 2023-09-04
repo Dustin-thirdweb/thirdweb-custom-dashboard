@@ -184,7 +184,7 @@ export default function NFTDrop() {
                                             const newTab = window.open(link, "_blank"); // Open link in new tab
                                             if (newTab) {
                                                 newTab.focus();
-                                                router.push('/'); // Redirect to ./
+                                                router.push(`/nft-drop/${contractAddress}`);
                                             } else {
                                                 console.warn("Popup was blocked. You can manually click the link to view the contract.");
                                             }
